@@ -14,26 +14,28 @@
 
 
 //Rotas para seccao do index
-Route::get('PainelInicial','Frontcontrol@index')->middleware('auth');
+// Route::get('PainelInicial','Frontcontrol@index')->middleware('auth');
 
 
 Auth::routes();
+Route::get('PainelInicial','dashController@index')->middleware('auth');
 //Rota para sessao de login e logaut
-Route::get('/','loginController@index');
+Route::get('/','loginController@index')->middleware('auth');
 Route::get('logout','loginController@logout');
-Route::resource('log','loginController');
+Route::resource('log','loginController')->middleware('auth');
+Route::get('/', 'loginController@index')->name('login');
 
 //Rotas para utilisador
-Route::resource('usuariodo','user_Controller');
+Route::resource('usuariodo','user_Controller')->middleware('auth');
 Route::get('usuario','user_Controller@create');
 
 //Rota para sessao do cliente
 Route::get('cliente','cliente_Controller@create');
 
 //Rotas para Controlpainel
-Route::resource('dash','dashController');
-Route::get('dashb','dashController@index');
-Route::get('PainelInicial','dashController@index');
+Route::resource('dash','dashController')->middleware('auth');
+Route::get('dashb','dashController@index')->middleware('auth');
+
 
 //Roas para Marca
 Route::get('marcaviw','marcaController@index');
@@ -175,3 +177,7 @@ Route::get('q_getstock_abate','abateController@find');
  //Saidas de equipamentos
  $this->get('pdf', 'guia_controller@show')->name('pdf');
  Route::get('req/pdf', 'guia_Controller@createPDF');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

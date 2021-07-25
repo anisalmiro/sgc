@@ -17,7 +17,8 @@ class Frontcontrol extends Controller
     public function index(){
           $query="";
           $useraction = DB::table($query);
-       return view('index', compact('useraction'));
+
+    //    return view('index', compact('useraction'));
     	//return view('Dashboard');
     }
     

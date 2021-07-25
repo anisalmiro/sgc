@@ -8,6 +8,9 @@
         </div>
     </div>
     <!-- /.row -->
+     <!--Div that will hold the pie chart-->
+    <div id="chart_div"></div>
+
     <div class="row">
         <div class="col-lg-3 col-md-6">
             <div class="panel panel-primary">
