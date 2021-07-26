@@ -16,14 +16,17 @@
 //Rotas para seccao do index
 // Route::get('PainelInicial','Frontcontrol@index')->middleware('auth');
 
-
 Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+
+
 Route::get('PainelInicial','dashController@index')->middleware('auth');
 //Rota para sessao de login e logaut
-Route::get('/','loginController@index')->middleware('auth');
+Route::get('/','loginController@index');
 Route::get('logout','loginController@logout');
-Route::resource('log','loginController')->middleware('auth');
-Route::get('/', 'loginController@index')->name('login');
+Route::resource('log','loginController');
 
 //Rotas para utilisador
 Route::resource('usuariodo','user_Controller')->middleware('auth');
@@ -178,6 +181,4 @@ Route::get('q_getstock_abate','abateController@find');
  $this->get('pdf', 'guia_controller@show')->name('pdf');
  Route::get('req/pdf', 'guia_Controller@createPDF');
 
-Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');

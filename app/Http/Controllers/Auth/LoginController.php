@@ -24,7 +24,7 @@ use AuthenticatesUsers;
      *
      * @var string
      */
-    protected $redirectTo = '/';
+    protected $redirectTo = '/PainelInicial';
 
     /**
      * Create a new controller instance.
